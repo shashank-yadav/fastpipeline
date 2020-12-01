@@ -1,0 +1,22 @@
+site_name: MLPipeline
+theme:
+  name: material
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format ''
+nav:
+  - MLPipeline: index.md
+  - about.md
+plugins:
+  - search
+extra_css:
+  - css/termynal.css
+  - css/custom.css
+extra_javascript:
+  - https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js
+  - js/termynal.js
+  - js/custom.js

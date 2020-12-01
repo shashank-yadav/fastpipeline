@@ -4,6 +4,9 @@ import logging
 import glob
 from termcolor import colored
 from os import path
+import logging
+
+logging.basicConfig(level=logging.NOTSET, format='%(levelname)s - %(message)s')
 
 def get_code_text_from_object(obj: object):
     '''Extract code text of a class from its object that can be used to identify changes made to that class'''

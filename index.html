@@ -14,7 +14,7 @@
     
     
       
-        <title>MLPipeline</title>
+        <title>FastPipeline</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mlpipeline" class="md-skip">
+        <a href="#fastpipeline" class="md-skip">
           Skip to content
         </a>
       
@@ -74,7 +74,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="." title="MLPipeline" class="md-header-nav__button md-logo" aria-label="MLPipeline">
+    <a href="." title="FastPipeline" class="md-header-nav__button md-logo" aria-label="FastPipeline">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -86,7 +86,7 @@
     <div class="md-header-nav__title" data-md-component="header-title">
       
         <div class="md-header-nav__ellipsis md-ellipsis">
-          MLPipeline
+          FastPipeline
         </div>
       
     </div>
@@ -141,13 +141,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="MLPipeline" class="md-nav__button md-logo" aria-label="MLPipeline">
+    <a href="." title="FastPipeline" class="md-nav__button md-logo" aria-label="FastPipeline">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    MLPipeline
+    FastPipeline
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -167,12 +167,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        MLPipeline
+        FastPipeline
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="." class="md-nav__link md-nav__link--active">
-      MLPipeline
+      FastPipeline
     </a>
     
       
@@ -297,12 +297,14 @@
               
                 
                 
-                <h1 id="mlpipeline">MLPipeline</h1>
+                <h1 id="fastpipeline">FastPipeline</h1>
 <p align="center">
     <em>Persistent, easy to use, fast to code
 </em>
 </p>
+
 <!-- <p align="center"> -->
+
 <!-- <a href="https://github.com/tiangolo/fastapi/actions?query=workflow%3ATest" target="_blank">
     <img src="https://github.com/tiangolo/fastapi/workflows/Test/badge.svg" alt="Test">
 </a>
@@ -312,13 +314,14 @@
 <a href="https://pypi.org/project/fastapi" target="_blank">
     <img src="https://img.shields.io/pypi/v/fastapi?color=%2334D058&label=pypi%20package" alt="Package version">
 </a> -->
+
 <!-- </p> -->
 
 <hr />
-<p><strong>Documentation</strong>: <a href="https://shashank-yadav.github.io/mlpipeline" target="_blank">https://shashank-yadav.github.io/mlpipeline/</a></p>
-<p><strong>Source Code</strong>: <a href="https://github.com/shashank-yadav/mlpipeline" target="_blank">https://github.com/shashank-yadav/mlpipeline</a></p>
+<p><strong>Documentation</strong>: <a href="https://shashank-yadav.github.io/fastpipeline" target="_blank">https://shashank-yadav.github.io/fastpipeline/</a></p>
+<p><strong>Source Code</strong>: <a href="https://github.com/shashank-yadav/fastpipeline" target="_blank">https://github.com/shashank-yadav/fastpipeline</a></p>
 <hr />
-<p>MLPipeline is a framework for creating general purpose pipeline in your ML projects. It helps in keeping track of your experiments by automatically storing all the intermediate data and source code. </p>
+<p>FastPipeline is a framework for creating general purpose pipeline in your ML projects. It helps in keeping track of your experiments by automatically storing all the intermediate data and source code. </p>
 <p>The key features are:</p>
 <ul>
 <li><strong>Persistence</strong>: Automatically stores all the intermediate data and variables during the run.</li>
@@ -331,7 +334,7 @@
 <h2 id="installation">Installation</h2>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code><span class="gp">$</span> pip install mlpipeline
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> pip install fastpipeline
 
 <span class="go">---&gt; 100%</span>
 </code></pre></div>
@@ -342,7 +345,7 @@
 <h4 id="train-a-classifier-over-the-infamous-mnist-dataset">Train a classifier over the (in)famous MNIST dataset</h4>
 <ul>
 <li>Create a file <code>mnist_pipeline.py</code></li>
-<li>Make necessary imports and create a class <code>DataLoader</code> that extends the <code>BaseNode</code> class from the mlpipeline package. This is something we'll refer to as a <code>Node</code></li>
+<li>Make necessary imports and create a class <code>DataLoader</code> that extends the <code>BaseNode</code> class from the fastpipeline package. This is something we'll refer to as a <code>Node</code></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># Import datasets, classifiers and performance metrics</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">svm</span><span class="p">,</span> <span class="n">metrics</span>
@@ -350,8 +353,8 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># Import pipeline and node constructs</span>
-<span class="kn">from</span> <span class="nn">mlpipeline.base_node</span> <span class="kn">import</span> <span class="n">BaseNode</span>
-<span class="kn">from</span> <span class="nn">mlpipeline.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">fastpipeline.base_node</span> <span class="kn">import</span> <span class="n">BaseNode</span>
+<span class="kn">from</span> <span class="nn">fastpipeline.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 
 <span class="c1"># Node for loading data</span>
 <span class="k">class</span> <span class="nc">DataLoader</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
@@ -371,6 +374,7 @@
             <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span>
         <span class="p">}</span>
 </code></pre></div>
+
 <ul>
 <li>Create another <code>Node</code> whose input is output of <code>DataLoader</code> and that trains an SVM classifier
 <div class="highlight"><pre><span></span><code><span class="c1"># Node for training the classifier</span>
@@ -416,12 +420,12 @@
 </code></pre></div></li>
 <li>Run the pipeline using <code>$ python mnist.py</code>. You should see somthing like:</li>
 </ul>
-<p><img alt="Screenshot" src="img/mlpipeline_mnist1.jpg" /></p>
+<p><img alt="Screenshot" src="img/fastpipeline_mnist1.jpg" /></p>
 <p>As expected it says that this is the first run and hence for both nodes outputs are being computed by calling their <code>run</code> method. The log here shows where the data is being stored</p>
 <ul>
 <li>Try running it again with the same command: <code>$ python mnist.py</code>. This time you should see something different:</li>
 </ul>
-<p><img alt="Screenshot" src="img/mlpipeline_mnist2.jpg" /></p>
+<p><img alt="Screenshot" src="img/fastpipeline_mnist2.jpg" /></p>
 <p>Since all the intermediate outputs are already computed, the pipeline just reloads the data at each step instead of re-computing</p>
 <ul>
 <li>Let's make a change to the value of config inside <code>__main__</code>:
@@ -430,7 +434,7 @@
 </code></pre></div></li>
 <li>Run the pipeline again. You'll see something like:</li>
 </ul>
-<p><img alt="Screenshot" src="img/mlpipeline_mnist3.jpg" /></p>
+<p><img alt="Screenshot" src="img/fastpipeline_mnist3.jpg" /></p>
 <p>This time it used the result from first node as-is and recomputed for second node, since we made a change to the config. </p>
 <p><strong>If you make any changes to the class <code>SVMClassifier</code> same thing will happen again. To learn more about this you can look at <a href="about/">About</a> section</strong></p>
                 

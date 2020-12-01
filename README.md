@@ -120,14 +120,14 @@ if __name__ == "__main__":
 * Run the pipeline using `$ python mnist.py`. You should see somthing like:
 
 
-![Screenshot](img/mlpipeline_mnist1.jpg)
+![Screenshot](/docs/img/mlpipeline_mnist1.jpg)
 
 As expected it says that this is the first run and hence for both nodes outputs are being computed by calling their `run` method. The log here shows where the data is being stored
 
 * Try running it again with the same command: `$ python mnist.py`. This time you should see something different:
 
 
-![Screenshot](img/mlpipeline_mnist2.jpg)
+![Screenshot](/docs/img/mlpipeline_mnist2.jpg)
 
 Since all the intermediate outputs are already computed, the pipeline just reloads the data at each step instead of re-computing
 
@@ -139,8 +139,8 @@ svm_node = SVMClassifier({'gamma': 0.05})
 * Run the pipeline again. You'll see something like:
 
 
-![Screenshot](img/mlpipeline_mnist3.jpg)
+![Screenshot](/docs/img/mlpipeline_mnist3.jpg)
 
 This time it used the result from first node as-is and recomputed for second node, since we made a change to the config. 
 
-**If you make any changes to the class `SVMClassifier` same thing will happen again. To learn more about this you can look at [About](about.md) section**
+**If you make any changes to the class `SVMClassifier` same thing will happen again.**

@@ -54,7 +54,7 @@ It is responsible for:
 5. Logging for each stage
 ---
 
-## The entire process
+## The entire process (Pseudocode)
 
 For each node object within a pipeline:
 
@@ -73,5 +73,8 @@ graph LR
 ```
 4. Create a folder by the name `[node_class]_[node_hash]`, for example `ClassifierNode_8d13c57118d69de715250ab3c084c681`
 5. Store the config as json, source code for the node class as a python file and the node object as a pickle in the created folder
-6. Convert the input dict to the run method into a string and compute the `input_hash`
-7. Create a folder `[node_class]_[node_hash]/input_[input_hash]` 
+6. Convert the input dict passed to the run method into a string and compute the `input_hash`
+7. Create a folder `[node_class]_[node_hash]/input_[input_hash]` if not already exists
+8. Check if the result from previous run exists if not then call the run method on the input dict
+9. Convert the output dict obtained from the run method into a string and compute the `output_hash`
+9. Store the output as `[node_class]_[node_hash]/input_[input_hash]/result_[output_hash].pkl`

@@ -35,6 +35,18 @@ The key features are:
 * **Intuitive**: Great editor support. <abbr title="also known as auto-complete, autocompletion, IntelliSense">Completion</abbr> everywhere. Less time debugging.
 * **Easy**: Designed to be easy to use and learn. Less time reading docs.
 
+## Installation
+
+<div class="termy">
+
+```console
+$ pip install mlpipeline
+
+---> 100%
+```
+
+</div>
+
 ## Example
 
 #### Train a classifier over the (in)famous MNIST dataset

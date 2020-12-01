@@ -4,8 +4,8 @@
     <em>Persistent, easy to use, fast to code
 </em>
 </p>
-<p align="center">
-<a href="https://github.com/tiangolo/fastapi/actions?query=workflow%3ATest" target="_blank">
+<!-- <p align="center"> -->
+<!-- <a href="https://github.com/tiangolo/fastapi/actions?query=workflow%3ATest" target="_blank">
     <img src="https://github.com/tiangolo/fastapi/workflows/Test/badge.svg" alt="Test">
 </a>
 <a href="https://codecov.io/gh/tiangolo/fastapi" target="_blank">
@@ -13,12 +13,12 @@
 </a>
 <a href="https://pypi.org/project/fastapi" target="_blank">
     <img src="https://img.shields.io/pypi/v/fastapi?color=%2334D058&label=pypi%20package" alt="Package version">
-</a>
-</p>
+</a> -->
+<!-- </p> -->
 
 ---
 
-**Documentation**: <a href="https://fastapi.tiangolo.com" target="_blank">https://fastapi.tiangolo.com</a>
+**Documentation**: <a href="https://shashank-yadav.github.io/mlpipeline" target="_blank">https://shashank-yadav.github.io/mlpipeline/</a>
 
 **Source Code**: <a href="https://github.com/shashank-yadav/mlpipeline" target="_blank">https://github.com/shashank-yadav/mlpipeline</a>
 
@@ -154,6 +154,6 @@ svm_node = SVMClassifier({'gamma': 0.05})
 
 This time it used the result from first node as-is and recomputed for second node, since we made a change to the config. 
 
-**If you make any changes to the class `SVMClassifier` same thing will happen again. To learn more about this you can look at [How it works](#) section**
+**If you make any changes to the class `SVMClassifier` same thing will happen again. To learn more about this you can look at [About](about.md) section**
 
 

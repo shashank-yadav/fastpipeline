@@ -5,8 +5,8 @@ from os import path
 from typing import List, Dict, Any, Tuple
 from termcolor import colored
 
-from mlpipeline.base_node import BaseNode
-from mlpipeline.Utils import get_hash_of_text, get_code_text_from_object, colored_logging, get_result_file
+from fastpipeline.base_node import BaseNode
+from fastpipeline.Utils import get_hash_of_text, get_code_text_from_object, colored_logging, get_result_file
 
 class Pipeline:
     """

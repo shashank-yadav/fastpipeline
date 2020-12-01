@@ -1,7 +1,7 @@
 # Example taken from: https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py
 
 import sys
-sys.path.append('C://Users//admin//projects//mlpipeline')
+sys.path.append('C://Users//admin//projects//fastpipeline')
 
 
 # Import datasets, classifiers and performance metrics
@@ -9,8 +9,8 @@ from sklearn import datasets, svm, metrics
 from sklearn.model_selection import train_test_split
 import numpy as np
 
-from mlpipeline.base_node import BaseNode
-from mlpipeline.pipeline import Pipeline
+from fastpipeline.base_node import BaseNode
+from fastpipeline.pipeline import Pipeline
 
 class DataLoader(BaseNode):
     def __init__(self):

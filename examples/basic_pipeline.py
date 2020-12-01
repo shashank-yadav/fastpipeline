@@ -1,9 +1,9 @@
 import sys
 import os
-sys.path.append('C://Users//admin//projects//mlpipeline')
+sys.path.append('C://Users//admin//projects//fastpipeline')
 
-from mlpipeline.base_node import BaseNode
-from mlpipeline.pipeline import PipeLine
+from fastpipeline.base_node import BaseNode
+from fastpipeline.pipeline import PipeLine
 
 class Node1(BaseNode):
     def __init__(self):

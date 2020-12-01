@@ -1,4 +1,4 @@
-# MLPipeline
+# FastPipeline
 
 <p align="center">
     <em>Persistent, easy to use, fast to code
@@ -18,13 +18,13 @@
 
 ---
 
-**Documentation**: <a href="https://shashank-yadav.github.io/mlpipeline" target="_blank">https://shashank-yadav.github.io/mlpipeline/</a>
+**Documentation**: <a href="https://shashank-yadav.github.io/fastpipeline" target="_blank">https://shashank-yadav.github.io/fastpipeline/</a>
 
-**Source Code**: <a href="https://github.com/shashank-yadav/mlpipeline" target="_blank">https://github.com/shashank-yadav/mlpipeline</a>
+**Source Code**: <a href="https://github.com/shashank-yadav/fastpipeline" target="_blank">https://github.com/shashank-yadav/fastpipeline</a>
 
 ---
 
-MLPipeline is a framework for creating general purpose pipeline in your ML projects. It helps in keeping track of your experiments by automatically storing all the intermediate data and source code. 
+FastPipeline is a framework for creating general purpose pipeline in your ML projects. It helps in keeping track of your experiments by automatically storing all the intermediate data and source code. 
 
 The key features are:
 
@@ -40,7 +40,7 @@ The key features are:
 <div class="termy">
 
 ```console
-$ pip install mlpipeline
+$ pip install fastpipeline
 
 ---> 100%
 ```
@@ -52,7 +52,7 @@ $ pip install mlpipeline
 #### Train a classifier over the (in)famous MNIST dataset
 
 * Create a file `mnist_pipeline.py`
-* Make necessary imports and create a class `DataLoader` that extends the `BaseNode` class from the mlpipeline package. This is something we'll refer to as a `Node`
+* Make necessary imports and create a class `DataLoader` that extends the `BaseNode` class from the fastpipeline package. This is something we'll refer to as a `Node`
 
 ```Python
 # Import datasets, classifiers and performance metrics
@@ -61,8 +61,8 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 
 # Import pipeline and node constructs
-from mlpipeline.base_node import BaseNode
-from mlpipeline.pipeline import Pipeline
+from fastpipeline.base_node import BaseNode
+from fastpipeline.pipeline import Pipeline
 
 # Node for loading data
 class DataLoader(BaseNode):
@@ -131,14 +131,14 @@ if __name__ == "__main__":
 * Run the pipeline using `$ python mnist.py`. You should see somthing like:
 
 
-![Screenshot](img/mlpipeline_mnist1.jpg)
+![Screenshot](img/fastpipeline_mnist1.jpg)
 
 As expected it says that this is the first run and hence for both nodes outputs are being computed by calling their `run` method. The log here shows where the data is being stored
 
 * Try running it again with the same command: `$ python mnist.py`. This time you should see something different:
 
 
-![Screenshot](img/mlpipeline_mnist2.jpg)
+![Screenshot](img/fastpipeline_mnist2.jpg)
 
 Since all the intermediate outputs are already computed, the pipeline just reloads the data at each step instead of re-computing
 
@@ -150,7 +150,7 @@ svm_node = SVMClassifier({'gamma': 0.05})
 * Run the pipeline again. You'll see something like:
 
 
-![Screenshot](img/mlpipeline_mnist3.jpg)
+![Screenshot](img/fastpipeline_mnist3.jpg)
 
 This time it used the result from first node as-is and recomputed for second node, since we made a change to the config. 
 

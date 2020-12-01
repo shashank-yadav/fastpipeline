@@ -1,6 +1,6 @@
 # Example taken from: https://scikit-learn.org/stable/auto_examples/model_selection/grid_search_text_feature_extraction.html
 import sys
-sys.path.append('C://Users//admin//projects//mlpipeline')
+sys.path.append('C://Users//admin//projects//fastpipeline')
 
 from sklearn.datasets import fetch_20newsgroups
 from sklearn.feature_extraction.text import CountVectorizer
@@ -10,8 +10,8 @@ from sklearn.model_selection import cross_val_score
 from sklearn import svm
 
 
-from mlpipeline.pipeline import Pipeline
-from mlpipeline.base_node import BaseNode
+from fastpipeline.pipeline import Pipeline
+from fastpipeline.base_node import BaseNode
 
 # Load some categories from the training set
 categories = [

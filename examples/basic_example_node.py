@@ -1,11 +1,11 @@
 import sys
 import os
-sys.path.append('C://Users//admin//projects//mlpipeline')
+sys.path.append('C://Users//admin//projects//fastpipeline')
 
 # dir_path = os.path.dirname(os.path.realpath(__file__))
 # print(dir_path)
 
-from mlpipeline.base_node import BaseNode
+from fastpipeline.base_node import BaseNode
 
 class Node(BaseNode):
     def __init__(self):

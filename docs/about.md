@@ -7,7 +7,7 @@
 A single logical unit of computation, this could include generating data, applying transformations, training models or generating results. 
 
 
-Each node extends the `BaseNode` class from mlpipeline package. Following diagram shows the relevant methods and attributes of the BaseNode class:
+Each node extends the `BaseNode` class from fastpipeline package. Following diagram shows the relevant methods and attributes of the BaseNode class:
 
 ```mermaid
 classDiagram

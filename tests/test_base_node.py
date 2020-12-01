@@ -1,4 +1,4 @@
-from mlpipeline.base_node import BaseNode
+from fastpipeline.base_node import BaseNode
 import pytest
 
 class TestNodeWithRun(BaseNode):

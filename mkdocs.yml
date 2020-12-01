@@ -1,4 +1,4 @@
-site_name: MLPipeline
+site_name: FastPipeline
 theme:
   name: material
 markdown_extensions:
@@ -9,7 +9,7 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_div_format ''
 nav:
-  - MLPipeline: index.md
+  - FastPipeline: index.md
   - about.md
 plugins:
   - search

@@ -11,7 +11,7 @@ setuptools.setup(
     description="Build time saving ML pipelines with built in autosave and reload",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/shashank-yadav/mlpipeline",
+    url="https://github.com/shashank-yadav/fastpipeline",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

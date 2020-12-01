@@ -1,5 +1,5 @@
 from typing import Dict, Any
-from mlpipeline.Utils import get_code_text_from_object, get_hash_of_text
+from fastpipeline.Utils import get_code_text_from_object, get_hash_of_text
 import inspect
 
 class BaseNode:

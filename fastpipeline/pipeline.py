@@ -4,6 +4,7 @@ import json
 from os import path
 from typing import List, Dict, Any, Tuple
 from termcolor import colored
+from datetime import datetime
 
 from fastpipeline.base_node import BaseNode
 from fastpipeline.Utils import get_hash_of_text, get_code_text_from_object, colored_logging, get_result_file
@@ -24,6 +25,12 @@ class Pipeline:
 
     savedir: str
         Full path of folder used for storing data from nodes: [experiments_dir]/[experiment_name]
+
+    pipeline_logpath: str
+        Full path of the json file containing details of a particular run of pipeline: [experiments_dir]/[experiment_name]/runs/yyy-mm-dd--hh-mm-ss.json
+
+    log: dict[str, Any]
+        Dictionary containing detailed log of a particular run
 
     nodes : List[BaseNode]
         List of nodes (whose classes are inherited from BaseNode)
@@ -50,9 +57,18 @@ class Pipeline:
             Folder containing all the experiments, full path will be [experiments_dir]/[experiment_name]
 
         """
+        now = datetime.now()
+        
+        dt_string = now.strftime("%Y-%m-%d--%H-%M-%S")
         self.experiment_name = experiment_name
         self.experiments_dir = experiments_dir
         self.savedir = path.join(self.experiments_dir, experiment_name)
+        self.pipeline_logpath = path.join(self.savedir, 'runs', '%s.json'%dt_string)
+        os.makedirs(path.join(self.savedir, 'runs'), exist_ok=True)
+        self.log = {
+            'id': dt_string,
+            'nodes': {}
+        }
         self.nodes = nodes
         
     def run(self, input: Dict[str, Any]):
@@ -78,26 +94,44 @@ class Pipeline:
         out : Dict[str, Any]
             Output in the same format as the input
         """
-        
         # Create a directory for this experiment if not already there
         os.makedirs(self.savedir, exist_ok=True)
+        colored_logging('Experiment: %s'%self.experiment_name, color1='magenta')
+        colored_logging('Pipeline: %s'%self.log['id'], color1='magenta')
+        colored_logging('You can find the complete logs in: ', self.pipeline_logpath)
+
+        for i, node in enumerate(self.nodes):
+            out, node_log = self.run_for_node(node, i+1, input)
+            if 'error' in node_log.keys():
+                raise Exception(node_log['error'])
+            self.log['nodes'][i+1] = node_log
+            input = out
         
-        colored_logging('\n\n-----PIPELINE STARTED-----\n', '', color1='green')
-        colored_logging('Find results of this experiment in: ', self.savedir)
-        colored_logging('NOTE: To store the data in any other directory, you can pass different arguments for experiment_name and experiments_dir variables when creating the pipeline object','', color1='red')
+        # Save log to file
+        with open(self.pipeline_logpath, "w") as f:
+            json.dump(self.log, f, indent=4, sort_keys=True)
         
-        for node in self.nodes:
+        return out
+
+    def run_for_node(self, node: BaseNode, node_id: int, input: Dict[str, Any]) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+        '''
+        Helper function for run() called for each node
+        '''
+        node_log = {}
+        try:
             node_name = node.name()
             node_hash = node.hash()
-            # logging.info(colored('Node: %s'%node_name, 'red'))
-            colored_logging('------------------------------------------------------------------------------------------','', color1='magenta')
-            colored_logging('node: ', node_name+'_'+node_hash)
+            colored_logging('')
+            colored_logging('Started running node #%s: '%node_id, node_name)
+
+            node_log['node_name'] = node_name
+            node_log['node_hash'] = node_hash
 
             # directory to store all the contents of the node
             node_dir = path.join(self.savedir, node_name+'_'+node_hash)
             os.makedirs(node_dir, exist_ok=True)
-            colored_logging('storing node data at: ', node_dir)
-            
+            node_log['node_dir'] = node_dir
+
             # store the code for the class corresponding to this node (if it doesn't already exists)
             if node.save_code:
                 object_code_filepath = path.join(node_dir, '%s.py'%node_name)
@@ -105,11 +139,9 @@ class Pipeline:
                     code_text = get_code_text_from_object(node)
                     with open( object_code_filepath, 'w') as f:
                         f.write(code_text)
-                    colored_logging('creating source code file: ', object_code_filepath, color2='green')
-                else:
-                    colored_logging('existing source code file: ', object_code_filepath)
+                node_log['object_code_filepath'] = object_code_filepath
             else:
-                colored_logging('not saving the source code for object', '', color1='red')
+                node_log['object_code_filepath'] = None
 
             # store the object so that it can be analyzed later if needed
             if node.save_object:
@@ -120,11 +152,9 @@ class Pipeline:
                             pkl.dump(node, f)
                     except:
                         raise AttributeError('Object is not picklable')
-                    colored_logging('creating pickled object: ', object_pickle_filepath, color2='green')
-                else:
-                    colored_logging('existing pickled object: ', object_pickle_filepath)
+                node_log['object_pickle_filepath'] = object_pickle_filepath
             else:
-                colored_logging('not saving the object', '', color1='red')
+                node_log['object_pickle_filepath'] = object_pickle_filepath
 
             # store the config separately in a directly readable format (json)
             if node.save_config:
@@ -135,40 +165,47 @@ class Pipeline:
                             json.dump(node.config, f)
                     except:
                         raise AttributeError('Unable to convert config to json')
-                    colored_logging('saving config as json: ', config_json_filepath, color2='green')
-                else:
-                    colored_logging('config stored as: ', config_json_filepath)
+                node_log['config_json_filepath'] = config_json_filepath
             else:
-                colored_logging('not saving the config passed to the object', '', color1='red')
+                node_log['config_json_filepath'] = config_json_filepath
 
             input_hash = get_hash_of_text(str(input))
             result_dir = path.join(node_dir, 'input_%s'%input_hash)
-
+            
+            colored_logging('Trying to load existing results from: ', result_dir)
             # check if result already exists, if not then generate it
             existing_result_filepath = get_result_file(result_dir)
             
             if existing_result_filepath is not None:
+                colored_logging('Found existing results... Loading...', color1='green')
                 # load existing result from previous run
-                colored_logging('loading previously calculated result from: ', existing_result_filepath)
                 with open(existing_result_filepath, 'rb') as f:
                     out = pkl.load(f)
+                
+                node_log['result_filepath'] = existing_result_filepath
+                node_log['reused_result'] = True
             else:
                 # run and save
-                colored_logging('no previous results for this input, running again ...', '', color1='red')
+                colored_logging('Existing results not found... Running...', color1='red')
+                node_log['reused_result'] = False
                 out = node.run(input)
                 if node.save_result:
                     result_hash = get_hash_of_text(str(out))
                     result_filepath = path.join(result_dir, 'result_%s.pkl'%result_hash)
                     os.makedirs(result_dir, exist_ok=True)
-                    colored_logging('storing pickled result: ', result_filepath, color2='green')
                     try:
                         with open(result_filepath, 'wb') as f:
                             pkl.dump(out, f)
                     except:
                         raise AttributeError('Result is not picklable')
+                    node_log['result_filepath'] = result_filepath
                 else:
-                    colored_logging('not saving the generated result', '', color1='red')
-                    
-            input = out
-        colored_logging('------------------------------------------------------------------------------------------','', color1='magenta')
-        return out
+                    node_log['result_filepath'] = None
+        
+        except Exception as e:
+            out = None
+            node_log['error'] = repr(e)
+
+        return out, node_log
+
+    

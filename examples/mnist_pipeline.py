@@ -56,17 +56,6 @@ class SVMClassifier(BaseNode):
             'y_pred': y_pred 
         }
 
-
-# if __name__ == "__main__":
-#     dl = DataLoader()
-#     svms = [ SVMClassifier({'gamma': gamma}) for gamma in [0.01, 0.05, 0.001]]
-    
-#     pipelines = [ Pipeline('mnist', [dl, svm]) for svm in svms ]
-#     for pipeline in pipelines:
-#         result = pipeline.run({})
-#         gamma = pipeline.nodes[1].config['gamma']
-#         print('\nResult for C=%s'%gamma)
-#         print('Accuracy: %s'%result['acc'])
 if __name__ == "__main__":
     # Initialize the nodes
     dl_node = DataLoader()

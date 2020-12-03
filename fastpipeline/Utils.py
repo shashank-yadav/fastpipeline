@@ -28,13 +28,15 @@ def get_hash_of_text(text):
     return hashval.hexdigest()
 
 
-def colored_logging(first_statement, second_statement, color1='yellow',  color2='cyan'):
+def colored_logging(first_statement, second_statement='', color1='yellow',  color2='cyan'):
     '''Normal logging is hard to read, we're printing with colors'''
+    
     logging.info( colored(first_statement, color1) + colored(second_statement, color2) )
 
 
 def get_result_file(folderpath):
     '''A helper function to find the file that contains the result of computations done on a node'''
+    
     possible_result_files = glob.glob(path.join(folderpath, 'result_*.pkl'))
     if len(possible_result_files) != 1:
         return None

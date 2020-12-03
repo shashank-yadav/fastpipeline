@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="fastpipeline", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Shashank Yadav",
     author_email="shashank7.iitd@gmail.com",
     description="Build time saving ML pipelines with built in autosave and reload",

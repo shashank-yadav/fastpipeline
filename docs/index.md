@@ -145,7 +145,7 @@ Since all the intermediate outputs are already computed, the pipeline just reloa
 * Let's make a change to the value of config inside `__main__`:
 ```Python
 # svm_node = SVMClassifier({'gamma': 0.01})
-svm_node = SVMClassifier({'gamma': 0.05})
+svm_node = SVMClassifier({'gamma': 0.03})
 ```
 * Run the pipeline again. You'll see something like:
 
@@ -155,5 +155,37 @@ svm_node = SVMClassifier({'gamma': 0.05})
 This time it used the result from first node as-is and recomputed for second node, since we made a change to the config. 
 
 **If you make any changes to the class `SVMClassifier` same thing will happen again. To learn more about this you can look at [About](about.md) section**
+
+The logs of a pipeline run are saved as json files and are of the form `yyyy-mm-dd--hh-mm-ss`. For us the one generated in the final run is: `2020-12-04--01-46-46.json`
+```json
+{
+    "id": "2020-12-04--01-46-46",
+    "nodes": {
+        "1": {
+            "config_json_filepath": "./experiments\\mnist\\DataLoader_e22f8795587efab6c62cd09a5e500371\\config.json",
+            "node_dir": "./experiments\\mnist\\DataLoader_e22f8795587efab6c62cd09a5e500371",
+            "node_hash": "e22f8795587efab6c62cd09a5e500371",
+            "node_name": "DataLoader",
+            "object_code_filepath": "./experiments\\mnist\\DataLoader_e22f8795587efab6c62cd09a5e500371\\DataLoader.py",
+            "object_pickle_filepath": "./experiments\\mnist\\DataLoader_e22f8795587efab6c62cd09a5e500371\\DataLoader.pkl",
+            "result_filepath": "./experiments\\mnist\\DataLoader_e22f8795587efab6c62cd09a5e500371\\input_99914b932bd37a50b983c5e7c90ae93b\\result_811e24983e1b55206e53cafddeacd384.pkl",
+            "reused_result": true
+        },
+        "2": {
+            "config_json_filepath": "./experiments\\mnist\\SVMClassifier_eb56fc945f1e51d2df2306adcdf0946b\\config.json",
+            "node_dir": "./experiments\\mnist\\SVMClassifier_eb56fc945f1e51d2df2306adcdf0946b",
+            "node_hash": "eb56fc945f1e51d2df2306adcdf0946b",
+            "node_name": "SVMClassifier",
+            "object_code_filepath": "./experiments\\mnist\\SVMClassifier_eb56fc945f1e51d2df2306adcdf0946b\\SVMClassifier.py",
+            "object_pickle_filepath": "./experiments\\mnist\\SVMClassifier_eb56fc945f1e51d2df2306adcdf0946b\\SVMClassifier.pkl",
+            "result_filepath": "./experiments\\mnist\\SVMClassifier_eb56fc945f1e51d2df2306adcdf0946b\\input_811e24983e1b55206e53cafddeacd384\\result_9eab81159e86abf42ac527566644e927.pkl",
+            "reused_result": false
+        }
+    }
+}
+```
+As you can see, it tells you the paths of all data which have been saved, also tells you if a result was reused from a previous run. We'll keep on working to make these logs more informative and useful in the future.
+
+
 
 

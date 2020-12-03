@@ -59,7 +59,7 @@ class SVMClassifier(BaseNode):
 if __name__ == "__main__":
     # Initialize the nodes
     dl_node = DataLoader()
-    svm_node = SVMClassifier({'gamma': 0.01})
+    svm_node = SVMClassifier({'gamma': 0.03})
 
     # Create the pipeline
     pipeline = Pipeline('mnist', [dl_node, svm_node])

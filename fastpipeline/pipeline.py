@@ -96,8 +96,9 @@ class Pipeline:
         """
         # Create a directory for this experiment if not already there
         os.makedirs(self.savedir, exist_ok=True)
+        # colored_logging('-------------------------------', color1='magenta')
+        colored_logging('Startig Pipeline: %s'%self.log['id'], color1='magenta')
         colored_logging('Experiment: %s'%self.experiment_name, color1='magenta')
-        colored_logging('Pipeline: %s'%self.log['id'], color1='magenta')
         colored_logging('You can find the complete logs in: ', self.pipeline_logpath)
 
         for i, node in enumerate(self.nodes):
@@ -108,8 +109,13 @@ class Pipeline:
             input = out
         
         # Save log to file
+        colored_logging('', color1='magenta')
+        colored_logging('Saving pipeline logs to file: %s'%self.pipeline_logpath, color1='magenta')
+        colored_logging('Pipeline Run finished successfully', color1='green')
+        colored_logging('--------------------', color1='magenta')
         with open(self.pipeline_logpath, "w") as f:
             json.dump(self.log, f, indent=4, sort_keys=True)
+
         
         return out
 

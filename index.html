@@ -430,13 +430,41 @@
 <ul>
 <li>Let's make a change to the value of config inside <code>__main__</code>:
 <div class="highlight"><pre><span></span><code><span class="c1"># svm_node = SVMClassifier({&#39;gamma&#39;: 0.01})</span>
-<span class="n">svm_node</span> <span class="o">=</span> <span class="n">SVMClassifier</span><span class="p">({</span><span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">})</span>
+<span class="n">svm_node</span> <span class="o">=</span> <span class="n">SVMClassifier</span><span class="p">({</span><span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">})</span>
 </code></pre></div></li>
 <li>Run the pipeline again. You'll see something like:</li>
 </ul>
 <p><img alt="Screenshot" src="img/fastpipeline_mnist3.jpg" /></p>
 <p>This time it used the result from first node as-is and recomputed for second node, since we made a change to the config. </p>
 <p><strong>If you make any changes to the class <code>SVMClassifier</code> same thing will happen again. To learn more about this you can look at <a href="about/">About</a> section</strong></p>
+<p>The logs of a pipeline run are saved as json files and are of the form <code>yyyy-mm-dd--hh-mm-ss</code>. For us the one generated in the final run is: <code>2020-12-04--01-46-46.json</code>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-12-04--01-46-46&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;nodes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;config_json_filepath&quot;</span><span class="p">:</span> <span class="s2">&quot;./experiments\\mnist\\DataLoader_e22f8795587efab6c62cd09a5e500371\\config.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;node_dir&quot;</span><span class="p">:</span> <span class="s2">&quot;./experiments\\mnist\\DataLoader_e22f8795587efab6c62cd09a5e500371&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;node_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;e22f8795587efab6c62cd09a5e500371&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;node_name&quot;</span><span class="p">:</span> <span class="s2">&quot;DataLoader&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;object_code_filepath&quot;</span><span class="p">:</span> <span class="s2">&quot;./experiments\\mnist\\DataLoader_e22f8795587efab6c62cd09a5e500371\\DataLoader.py&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;object_pickle_filepath&quot;</span><span class="p">:</span> <span class="s2">&quot;./experiments\\mnist\\DataLoader_e22f8795587efab6c62cd09a5e500371\\DataLoader.pkl&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;result_filepath&quot;</span><span class="p">:</span> <span class="s2">&quot;./experiments\\mnist\\DataLoader_e22f8795587efab6c62cd09a5e500371\\input_99914b932bd37a50b983c5e7c90ae93b\\result_811e24983e1b55206e53cafddeacd384.pkl&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;reused_result&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;2&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;config_json_filepath&quot;</span><span class="p">:</span> <span class="s2">&quot;./experiments\\mnist\\SVMClassifier_eb56fc945f1e51d2df2306adcdf0946b\\config.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;node_dir&quot;</span><span class="p">:</span> <span class="s2">&quot;./experiments\\mnist\\SVMClassifier_eb56fc945f1e51d2df2306adcdf0946b&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;node_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;eb56fc945f1e51d2df2306adcdf0946b&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;node_name&quot;</span><span class="p">:</span> <span class="s2">&quot;SVMClassifier&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;object_code_filepath&quot;</span><span class="p">:</span> <span class="s2">&quot;./experiments\\mnist\\SVMClassifier_eb56fc945f1e51d2df2306adcdf0946b\\SVMClassifier.py&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;object_pickle_filepath&quot;</span><span class="p">:</span> <span class="s2">&quot;./experiments\\mnist\\SVMClassifier_eb56fc945f1e51d2df2306adcdf0946b\\SVMClassifier.pkl&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;result_filepath&quot;</span><span class="p">:</span> <span class="s2">&quot;./experiments\\mnist\\SVMClassifier_eb56fc945f1e51d2df2306adcdf0946b\\input_811e24983e1b55206e53cafddeacd384\\result_9eab81159e86abf42ac527566644e927.pkl&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;reused_result&quot;</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+As you can see, it tells you the paths of all data which have been saved, also tells you if a result was reused from a previous run. We'll keep on working to make these logs more informative and useful in the future.</p>
                 
               
               

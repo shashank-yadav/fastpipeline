@@ -1,5 +1,7 @@
 # FastPipeline
 
+![Screenshot](/docs/img/fastpipeline_logo.png)
+
 <p align="center">
     <em>Persistent, easy to use, fast to code
 </em>

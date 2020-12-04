@@ -1,5 +1,10 @@
 # FastPipeline
 
+<!-- <p align="center"> -->
+![Screenshot](img/fastpipeline_logo.png)
+<!-- </p> -->
+
+
 <p align="center">
     <em>Persistent, easy to use, fast to code
 </em>

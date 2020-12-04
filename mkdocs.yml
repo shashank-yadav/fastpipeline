@@ -1,6 +1,7 @@
 site_name: FastPipeline
 theme:
   name: material
+  logo: img/logo.png
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences:

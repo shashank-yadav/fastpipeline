@@ -1,6 +1,6 @@
 # Example taken from: https://scikit-learn.org/stable/auto_examples/model_selection/grid_search_text_feature_extraction.html
-import sys
-sys.path.append('C://Users//admin//projects//fastpipeline')
+# import sys
+# sys.path.append('C://Users//admin//projects//fastpipeline')
 
 from sklearn.datasets import fetch_20newsgroups
 from sklearn.feature_extraction.text import CountVectorizer
